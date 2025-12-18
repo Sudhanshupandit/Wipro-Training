@@ -1,0 +1,44 @@
+CREATE DATABASE Amazon;
+USE Amazon;
+
+CREATE TABLE Product (
+    ProdId INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Brand VARCHAR(50),
+    ManuDate DATE,
+    ExpDate DATE,
+    Price DECIMAL(10,2)
+);
+
+
+
+INSERT INTO Product VALUES
+(1, 'Laptop', 'Dell', '2024-01-10', '2029-01-10', 65000),
+(2, 'Mobile', 'Samsung', '2024-02-15', '2028-02-15', 35000),
+(3, 'Headphones', 'Sony', '2024-03-01', '2026-03-01', 5000),
+(4, 'Smart Watch', 'Apple', '2024-01-20', '2027-01-20', 42000),
+(5, 'Keyboard', 'Logitech', '2023-12-10', '2026-12-10', 2500),
+(6, 'Mouse', 'HP', '2024-02-05', '2026-02-05', 1200),
+(7, 'Monitor', 'LG', '2024-03-12', '2029-03-12', 18000),
+(8, 'Tablet', 'Lenovo', '2024-01-18', '2028-01-18', 22000),
+(9, 'Speaker', 'JBL', '2024-02-25', '2027-02-25', 8000),
+(10, 'Printer', 'Canon', '2024-03-05', '2029-03-05', 15000);
+
+
+SELECT * FROM Product;
+SELECT Name, Brand, Price FROM Product;
+SELECT * FROM Product WHERE Price > 20000;
+
+
+UPDATE Product
+SET Price = 70000
+WHERE ProdId = 1;
+
+UPDATE Product
+SET Brand = 'Samsung Pro'
+WHERE ProdId = 2;
+
+DELETE FROM Product
+WHERE ProdId = 10;
+
+DELETE FROM Product;

@@ -1,0 +1,54 @@
+CREATE DATABASE ReatailDB;
+USE RetailDB;
+
+CREATE TABLE Product (
+ProdId INT PRIMARY KEY,
+ProdName VARCHAR(100) NOT NULL,
+Brand VARCHAR(50),
+Price DECIMAL(10,2),
+orderId INT
+);
+
+CREATE TABLE Orders(
+orderId INT PRIMARY KEY,
+CustomerName VARCHAR(100) NOT NULL,
+OrderDate DATE,
+City VARCHAR(50)
+);
+
+INSERT INTO Orders VALUES
+(1001, 'Amit', '2025-12-01', 'Delhi'),
+(1002, 'Neha', '2025-12-03', 'Mumbai'),
+(1003, 'Ravi', '2025-12-05', 'Pune'),
+(1004, 'Priya', '2025-12-07', 'Banglore'),
+(1005, 'Sahil', '2025-12-09', 'Hyderabad');
+
+INSERT INTO Product VALUES 
+(1, 'Laptop', 'Dell', 65000, 1001),
+(2,'Mobile', 'Samsung', 3000, 1002),
+(3,'Mouse', 'Logitech', 2000, 1002),
+(4,'Monito', 'LG', 7000, 1003),
+(5,'Keyboard', 'HP', 9000, 1010),
+(6,'Tablet', 'Lenovo', 1000, NULL);
+
+SELECT 
+p.ProdId, p.ProdName, p.Brand, p.Price,
+o.orderId, o.CustomerName, o.Orderdate, o.City
+FROM Product p
+INNER JOIN Orders o
+ON p.orderId = o.orderId;
+
+SELECT 
+p.ProdId, p.ProdName, p.Brand, p.Price,
+o.orderId, o.CustomerName, o.Orderdate, o.City
+FROM Product p
+LEFT JOIN Orders o
+ON p.orderId = o.orderId;
+
+SELECT 
+p.ProdId, p.ProdName, p.Brand, p.Price,
+o.orderId, o.CustomerName, o.Orderdate, o.City
+FROM Product p
+RIGHT JOIN Orders o
+ON p.orderId = o.orderId;
+
